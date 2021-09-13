@@ -29,7 +29,7 @@ class CreateCircleSerializer(serializers.Serializer):
         ]
     )
     about = serializers.CharField(
-        max_length=255, 
+        max_length=255,
         required=False
     )
 
