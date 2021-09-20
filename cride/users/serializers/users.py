@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 """User serializers."""
-=======
-"""Users serializers."""
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 
 # Django
 from django.conf import settings
@@ -32,10 +28,6 @@ class UserModelSerializer(serializers.ModelSerializer):
     """User model serializer."""
 
     profile = ProfileModelSerializer(read_only=True)
-<<<<<<< HEAD
-=======
-
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
     class Meta:
         """Meta class."""
 
@@ -53,19 +45,11 @@ class UserModelSerializer(serializers.ModelSerializer):
 class UserSignUpSerializer(serializers.Serializer):
     """User sign up serializer.
 
-<<<<<<< HEAD
-    Handle sig un data validation and user/profile creation.
-    """
-
-    email = serializers.EmailField(
-        validators=[ UniqueValidator(queryset=User.objects.all())]
-=======
     Handle sign up data validation and user/profile creation.
     """
 
     email = serializers.EmailField(
         validators=[UniqueValidator(queryset=User.objects.all())]
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
     )
     username = serializers.CharField(
         min_length=4,
@@ -84,10 +68,6 @@ class UserSignUpSerializer(serializers.Serializer):
     password = serializers.CharField(min_length=8, max_length=64)
     password_confirmation = serializers.CharField(min_length=8, max_length=64)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
     # Name
     first_name = serializers.CharField(min_length=2, max_length=30)
     last_name = serializers.CharField(min_length=2, max_length=30)
@@ -121,15 +101,9 @@ class UserSignUpSerializer(serializers.Serializer):
         msg = EmailMultiAlternatives(subject, content, from_email, [user.email])
         msg.attach_alternative(content, "text/html")
         msg.send()
-<<<<<<< HEAD
-    
-    def gen_verification_token(self, user):
-        """Create JWT token that the user can use  to verify its account."""
-=======
 
     def gen_verification_token(self, user):
         """Create JWT token that the user can use to verify its account."""
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
         exp_date = timezone.now() + timedelta(days=3)
         payload = {
             'user': user.username,
@@ -164,10 +138,6 @@ class UserLoginSerializer(serializers.Serializer):
         token, created = Token.objects.get_or_create(user=self.context['user'])
         return self.context['user'], token.key
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 class AccountVerificationSerializer(serializers.Serializer):
     """Account verification serializer."""
 
@@ -192,8 +162,4 @@ class AccountVerificationSerializer(serializers.Serializer):
         payload = self.context['payload']
         user = User.objects.get(username=payload['user'])
         user.is_verified = True
-<<<<<<< HEAD
         user.save()
-=======
-        user.save()
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29

@@ -6,10 +6,6 @@ from rest_framework import serializers
 # Models
 from cride.users.models import Profile
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 class ProfileModelSerializer(serializers.ModelSerializer):
     """Profile model serializer."""
 

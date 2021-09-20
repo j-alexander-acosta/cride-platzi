@@ -11,17 +11,10 @@ django>=2.0.10
 django-environ==0.4.5
 
 # Django REST Framework
-<<<<<<< HEAD
 djangorestframework==3.12.2
 
 # JWT
 pyjwt>=2.0.0
-=======
-djangorestframework==3.9.0
-
-# JWT
-pyjwt==1.7.1
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 
 # Passwords security
 argon2-cffi==20.1.0

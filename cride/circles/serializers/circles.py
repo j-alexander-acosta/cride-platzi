@@ -3,11 +3,7 @@
 # Django REST Framework
 from rest_framework import serializers
 
-<<<<<<< HEAD
-# Models
-=======
 # Model
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 from cride.circles.models import Circle
 
 
@@ -30,11 +26,7 @@ class CircleModelSerializer(serializers.ModelSerializer):
             'about', 'picture',
             'rides_offered', 'rides_taken',
             'verified', 'is_public',
-<<<<<<< HEAD
-            'is_limited', 'members_limit',
-=======
             'is_limited', 'members_limit'
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
         )
         read_only_fields = (
             'is_public',
@@ -48,9 +40,5 @@ class CircleModelSerializer(serializers.ModelSerializer):
         members_limit = data.get('members_limit', None)
         is_limited = data.get('is_limited', False)
         if is_limited ^ bool(members_limit):
-<<<<<<< HEAD
-            raise serializers.ValidationError('If circle is limited, a member limit must be provided.')
-=======
             raise serializers.ValidationError('If circle is limited, a member limit must be provided')
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
         return data

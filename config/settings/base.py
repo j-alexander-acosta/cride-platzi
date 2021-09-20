@@ -159,11 +159,7 @@ CELERYD_TASK_SOFT_TIME_LIMIT = 60
 
 # Django REST Framework
 REST_FRAMEWORK = {
-<<<<<<< HEAD
-    'DEFAULT_RENDERE_CLASSES': (
-=======
     'DEFAULT_RENDERER_CLASSES': (
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
         'rest_framework.renderers.JSONRenderer',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
