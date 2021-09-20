@@ -15,10 +15,10 @@ from cride.circles.models import Circle, Membership
 
 
 class CircleViewSet(mixins.CreateModelMixin,
-                   mixins.RetrieveModelMixin,
-                   mixins.UpdateModelMixin,
-                   mixins.ListModelMixin,
-                   viewsets.GenericViewSet):
+                    mixins.RetrieveModelMixin,
+                    mixins.UpdateModelMixin,
+                    mixins.ListModelMixin,
+                    viewsets.GenericViewSet):
     """Circles view set."""
 
     serializer_class = CircleModelSerializer
