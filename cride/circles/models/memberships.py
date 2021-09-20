@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-"""Memberships model."""
-=======
 """Membership model."""
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 
 # Django
 from django.db import models
@@ -10,10 +6,6 @@ from django.db import models
 # Utilities
 from cride.utils.models import CRideModel
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 class Membership(CRideModel):
     """Membership model.
 
