@@ -6,6 +6,10 @@ from django.db import models
 # Utilities
 from cride.utils.models import CRideModel
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 class Circle(CRideModel):
     """Circle model.
 
@@ -38,6 +42,7 @@ class Circle(CRideModel):
 
     is_public = models.BooleanField(
         default=True,
+<<<<<<< HEAD
         help_text='Public circles are listed in the main page so everyone know about theire existence.'
     )
 
@@ -50,6 +55,19 @@ class Circle(CRideModel):
     members_limit = models.PositiveIntegerField(
         default=0,
         help_text='If circle is limited, this will be the maximum number of members.'
+=======
+        help_text='Public circles are listed in the main page so everyone know about their existence.'
+    )
+
+    is_limited = models.BooleanField(
+        'limited',
+        default=False,
+        help_text='Limited circles can grow up to a fixed number of members.'
+    )
+    members_limit = models.PositiveIntegerField(
+        default=0,
+        help_text='If circle is limited, this will be the limit on the number of members.'
+>>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
     )
 
     def __str__(self):
@@ -59,4 +77,8 @@ class Circle(CRideModel):
     class Meta(CRideModel.Meta):
         """Meta class."""
 
+<<<<<<< HEAD
         ordering = ['-rides_taken', '-rides_offered']
+=======
+        ordering = ['-rides_taken', '-rides_offered']
+>>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29

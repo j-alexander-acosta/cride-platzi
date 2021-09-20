@@ -7,7 +7,7 @@ from rest_framework import mixins, viewsets
 from rest_framework.permissions import IsAuthenticated
 from cride.circles.permissions.circles import IsCircleAdmin
 
-# Serialilzers
+# Serializers
 from cride.circles.serializers import CircleModelSerializer
 
 # Models
@@ -19,7 +19,7 @@ class CircleViewSet(mixins.CreateModelMixin,
                     mixins.UpdateModelMixin,
                     mixins.ListModelMixin,
                     viewsets.GenericViewSet):
-    """Circles view set."""
+    """Circle view set."""
 
     serializer_class = CircleModelSerializer
     lookup_field = 'slug_name'
@@ -32,14 +32,14 @@ class CircleViewSet(mixins.CreateModelMixin,
         return queryset
 
     def get_permissions(self):
-        """Assign permissions based on actions."""
+        """Assign permissions based on action."""
         permissions = [IsAuthenticated]
         if self.action in ['update', 'partial_update']:
             permissions.append(IsCircleAdmin)
         return [permission() for permission in permissions]
 
     def perform_create(self, serializer):
-        """Assing circle admin."""
+        """Assign circle admin."""
         circle = serializer.save()
         user = self.request.user
         profile = user.profile
@@ -48,5 +48,5 @@ class CircleViewSet(mixins.CreateModelMixin,
             profile=profile,
             circle=circle,
             is_admin=True,
-            remaining_invitations = 10
+            remaining_invitations=10
         )

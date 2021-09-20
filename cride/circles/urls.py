@@ -10,7 +10,10 @@ from rest_framework.routers import DefaultRouter
 from .views import circles as circle_views
 from .views import memberships as membership_views
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bbc966a9d58bf236d512eb56eb1ecf2ab5fc9f29
 router = DefaultRouter()
 router.register(r'circles', circle_views.CircleViewSet, basename='circle')
 router.register(

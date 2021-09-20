@@ -33,9 +33,11 @@ class MembershipViewSet(mixins.ListModelMixin,
 
     def get_permissions(self):
         """Assign permissions based on action."""
-        permissions = [IsAuthenticated, IsActiveCircleMember]
+        permissions = [IsAuthenticated]
+        if self.action != 'create':
+            permissions.append(IsActiveCircleMember)
         if self.action == 'invitations':
-            permissions.append(IsSelMember)
+            permissions.append(IsSelfMember)
         return [p() for p in permissions]
 
     def get_queryset(self):
@@ -46,16 +48,16 @@ class MembershipViewSet(mixins.ListModelMixin,
         )
 
     def get_object(self):
-        """Return the circle membership by using the user's username."""
+        """Return the circle member by using the user's username."""
         return get_object_or_404(
             Membership,
-            user__name=self.kwargs['pk'],
+            user__username=self.kwargs['pk'],
             circle=self.circle,
             is_active=True
         )
 
     def perform_destroy(self, instance):
-        """Disable the membership."""
+        """Disable membership."""
         instance.is_active = False
         instance.save()
 
@@ -64,11 +66,11 @@ class MembershipViewSet(mixins.ListModelMixin,
         """Retrieve a member's invitations breakdown.
 
         Will return a list containing all the members that have
-        used its invitations and another list containing the 
+        used its invitations and another list containing the
         invitations that haven't being used yet.
         """
         member = self.get_object()
-        invited = Membership.objects.filter(
+        invited_members = Membership.objects.filter(
             circle=self.circle,
             invited_by=request.user,
             is_active=True
@@ -77,9 +79,9 @@ class MembershipViewSet(mixins.ListModelMixin,
         unused_invitations = Invitation.objects.filter(
             circle=self.circle,
             issued_by=request.user,
-            used=False,
+            used=False
         ).values_list('code')
-        diff  = member.remaining_inivtations -len(unused_invitations)
+        diff = member.remaining_invitations - len(unused_invitations)
 
         invitations = [x[0] for x in unused_invitations]
         for i in range(0, diff):
@@ -106,4 +108,4 @@ class MembershipViewSet(mixins.ListModelMixin,
         member = serializer.save()
 
         data = self.get_serializer(member).data
-        return Response(data, status=HTTP_201_CREATED)
+        return Response(data, status=status.HTTP_201_CREATED)
