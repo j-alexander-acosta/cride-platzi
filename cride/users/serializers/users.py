@@ -1,4 +1,4 @@
-"""User serializers."""
+"""Users serializers."""
 
 # Django
 from django.conf import settings
@@ -21,12 +21,14 @@ from cride.users.serializers.profiles import ProfileModelSerializer
 
 # Utilities
 import jwt
+from datetime import timedelta
 
 
 class UserModelSerializer(serializers.ModelSerializer):
     """User model serializer."""
 
     profile = ProfileModelSerializer(read_only=True)
+
     class Meta:
         """Meta class."""
 
@@ -112,6 +114,7 @@ class UserLoginSerializer(serializers.Serializer):
         """Generate or retrieve new token."""
         token, created = Token.objects.get_or_create(user=self.context['user'])
         return self.context['user'], token.key
+
 
 class AccountVerificationSerializer(serializers.Serializer):
     """Account verification serializer."""

@@ -12,6 +12,7 @@ from cride.users.serializers import UserModelSerializer
 # Models
 from cride.circles.models import Membership, Invitation
 
+
 class MembershipModelSerializer(serializers.ModelSerializer):
     """Member model serializer."""
 
@@ -37,6 +38,7 @@ class MembershipModelSerializer(serializers.ModelSerializer):
             'invited_by',
             'rides_taken', 'rides_offered',
         )
+
 
 class AddMemberSerializer(serializers.Serializer):
     """Add member serializer.
@@ -82,6 +84,7 @@ class AddMemberSerializer(serializers.Serializer):
         circle = self.context['circle']
         invitation = self.context['invitation']
         user = data['user']
+
         now = timezone.now()
 
         # Member creation

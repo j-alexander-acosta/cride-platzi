@@ -1,4 +1,4 @@
-"""Circles views."""
+"""Circle views."""
 
 # Django REST Framework
 from rest_framework import mixins, viewsets

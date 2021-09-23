@@ -34,6 +34,7 @@ class UserViewSet(mixins.RetrieveModelMixin,
 
     Handle sign up, login and account verification.
     """
+
     queryset = User.objects.filter(is_active=True, is_client=True)
     serializer_class = UserModelSerializer
     lookup_field = 'username'

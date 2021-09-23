@@ -16,6 +16,7 @@ from cride.circles.permissions.memberships import IsActiveCircleMember, IsSelfMe
 # Serializers
 from cride.circles.serializers import MembershipModelSerializer, AddMemberSerializer
 
+
 class MembershipViewSet(mixins.ListModelMixin,
                         mixins.CreateModelMixin,
                         mixins.RetrieveModelMixin,
